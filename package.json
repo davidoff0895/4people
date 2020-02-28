@@ -1,0 +1,59 @@
+{
+  "name": "4people",
+  "version": "1.0.0",
+  "description": "test task",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./scripts/webpack/webpack.dev.config.js",
+    "build": "./node_modules/.bin/webpack -p --config ./scripts/webpack/webpack.prod.config.js",
+    "test": "tslint -c tslint.json 'src/**/*.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidoff0895/4people.git"
+  },
+  "author": "davydov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidoff0895/4people/issues"
+  },
+  "homepage": "https://github.com/davidoff0895/4people#readme",
+  "devDependencies": {
+    "@zxcabs/vuex-promise-action-name-helper": "^1.0.0",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.4.2",
+    "fork-ts-checker-notifier-webpack-plugin": "^2.0.0",
+    "fork-ts-checker-webpack-plugin": "^4.0.5",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.13.1",
+    "path": "^0.12.7",
+    "sass-loader": "^8.0.2",
+    "ts-loader": "^6.2.1",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "tslint": "^6.0.0",
+    "url-loader": "^3.0.0",
+    "vue-loader": "^15.9.0",
+    "vue-style-loader": "^4.1.2",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-regular-svg-icons": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
+    "typescript": "^3.8.2",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.0",
+    "vue-router": "^3.1.6",
+    "vue-template-compiler": "^2.6.11",
+    "vue-toasted": "^1.1.27",
+    "vuex": "^3.1.2",
+    "vuex-class": "^0.3.2"
+  }
+}
