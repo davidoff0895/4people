@@ -21,18 +21,29 @@ interface IGroupCategory {
 }
 
 interface IProductCategory {
-  [key: string]: {
-    N: string
-    T?: number | string
-    C?: number
-    P?: number
-    id?: number
-  }
+  [key: string]: IProductCategoryBody
+}
+
+interface IProductCategoryBody {
+  N: string
+  T?: number | string
+  C?: number
+  P?: number
+  id?: number
+  selectedQuantity?: number
+  groupId?: number
+}
+
+interface IQueryChangeQuantity {
+  quantity: number
+  product: IProductCategoryBody
 }
 
 export {
   IProductState,
   IGoodItem,
   IGroupCategory,
-  IProductCategory
+  IProductCategory,
+  IProductCategoryBody,
+  IQueryChangeQuantity
 }

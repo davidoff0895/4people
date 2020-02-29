@@ -1,0 +1,30 @@
+@import "@/ui/variables.scss";
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.grid-container {
+  display: grid;
+}
+.thead {
+  color: $gray;
+  padding: $common-padding;
+}
+.t-row {
+  color: $gray-100;
+  margin: 15px 10px;
+  padding: 15px 0;
+  border-top: $border-inner;
+}
+.btn-no-style {
+  border: none;
+  font-size: 14px;
+  letter-spacing: .5px;
+  color: $gray-100;
+}
+.remove {
+  color: red
+}
+.bold {
+  font-weight: bold;
+}

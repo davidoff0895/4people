@@ -15,7 +15,5 @@
 </script>
 
 <style lang="scss">
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
+  @import "@/ui/styles.scss";
 </style>

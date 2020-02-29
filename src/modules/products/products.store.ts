@@ -2,14 +2,10 @@ import { Module } from 'vuex'
 import data from '@/common/__data__/data.json'
 import names from '@/common/__data__/names.json'
 
-// @ts-ignore
-import actionHelper from '@zxcabs/vuex-promise-action-name-helper'
+const SET_PRODUCTS = 'SET_PRODUCTS'
+const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 
-const SET_PRODUCT = actionHelper('SET_PRODUCT')
-
-import {
-  IProductState
-} from './types/products.types'
+import { IProductState } from './types/products.types'
 import {ProductsGroupCast} from '@/modules/products/types/products.classes'
 
 export default (): Module<IProductState, null> => ({
@@ -25,16 +21,19 @@ export default (): Module<IProductState, null> => ({
 
   actions: {
     getProducts({commit}) {
-      commit(SET_PRODUCT.SUCCEEDED, new ProductsGroupCast({
+      commit(SET_PRODUCTS, new ProductsGroupCast({
       //@ts-ignore
         products: data.Value.Goods,
         castRules: names
       }))
+    },
+    updateProducts({state, commit}, query) {
+      commit(UPDATE_PRODUCT, query)
     }
   },
 
   mutations: {
-    [SET_PRODUCT.SUCCEEDED](state, data) {
+    [SET_PRODUCTS](state, data) {
       state.products = data
     }
   }

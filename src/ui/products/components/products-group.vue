@@ -9,7 +9,7 @@
         {{ group.G }}
       </div>
       <template v-if="isShowItem">
-        <div v-for="item in group.B" class="grid-item">
+        <div v-for="item in group.B" class="grid-item products-group__container__list">
           <div
             class="grid-container products-group__container__item"
             :class="{selected: isSelected(item)}"
@@ -65,15 +65,9 @@
 </script>
 
 <style lang="scss" scoped>
-  $border-inner: 1px solid #d6d6d6;
-  $common-padding: 5px 10px;
-  $large-padding: 20px;
-  $hover-color: #f4f4f4;
-  $accent-color: #ff7300;
+  @import "@/ui/variables.scss";
 
   .grid-container {
-    display: grid;
-
     &__header {
       grid-column: 1 / 3;
       background-color: lighten(#2196F3, 20%);
@@ -97,12 +91,12 @@
       grid-template-columns: 1fr 1fr;
       margin: 5px;
       border-radius: 2px;
-      border: 1px solid #c6c6c6;
+      border: $border-outher;
 
       &__item {
         grid-template-columns: auto 90px;
         cursor: pointer;
-        transition: all .3s ease;
+        transition: $common-transition;
 
         &:hover {
           background: $hover-color;
@@ -121,12 +115,12 @@
           text-align: center;
           font-weight: bold;
           background: #e6e6e6;
-          transition: all .3s ease;
+          transition: $common-transition;
         }
       }
     }
     &__toggle {
-      transition: all .2s ease;
+      transition: $common-transition;
     }
 
     &__toggle.opened {
@@ -135,12 +129,12 @@
   }
   .selected {
     .products-group__container__item__content, .products-group__container__item__price {
-      background: #d4edda;
+      background: $selected-color;
       transition: none;
     }
     &:hover {
       .products-group__container__item__content, .products-group__container__item__price {
-        background: #d4edda;
+        background: $selected-color;
       }
     }
   }

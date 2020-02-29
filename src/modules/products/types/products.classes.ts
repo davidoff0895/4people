@@ -13,7 +13,9 @@ class ProductsGroupCast {
         N: castRules[product.G].B[product.T].N,
         C: product.C * 66,
         P: product.P,
-        id: product.T
+        id: product.T,
+        selectedQuantity: 1,
+        groupId: product.G
       }
       return acc
     }, {})

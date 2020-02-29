@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/davidoff0895/4people#readme",
   "devDependencies": {
-    "@zxcabs/vuex-promise-action-name-helper": "^1.0.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
