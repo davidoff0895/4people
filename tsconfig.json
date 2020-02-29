@@ -13,6 +13,7 @@
     "baseUrl": ".",
     "strictNullChecks": false,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "paths": {
       "@/*": [
         "src/*"

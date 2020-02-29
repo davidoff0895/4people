@@ -14,6 +14,8 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
 </style>

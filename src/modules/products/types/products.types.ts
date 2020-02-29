@@ -1,16 +1,5 @@
-interface IProduct {
-  Error: string
-  Id: number,
-  Success: boolean,
-  Value: IProductValue
-}
-
-interface IProductValue {
-  Goods: IGoodItem[]
-}
-
 interface IProductState {
-  products: IProductValue
+  products: IGroupCategory
 }
 
 interface IGoodItem {
@@ -23,7 +12,27 @@ interface IGoodItem {
   T: number
 }
 
+interface IGroupCategory {
+  [key: string]: {
+    G: string
+    B: IProductCategory
+    C?: number
+  }
+}
+
+interface IProductCategory {
+  [key: string]: {
+    N: string
+    T?: number | string
+    C?: number
+    P?: number
+    id?: number
+  }
+}
+
 export {
-  IProduct,
-  IProductState
+  IProductState,
+  IGoodItem,
+  IGroupCategory,
+  IProductCategory
 }
