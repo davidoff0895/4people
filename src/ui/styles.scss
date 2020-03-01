@@ -9,6 +9,7 @@ body {
 .thead {
   color: $gray;
   padding: $common-padding;
+  margin-top: 10px;
 }
 .t-row {
   color: $gray-100;
@@ -27,4 +28,14 @@ body {
 }
 .bold {
   font-weight: bold;
+}
+.d-inline-block {
+  display: inline-block;
+}
+.center-block {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

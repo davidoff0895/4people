@@ -1,5 +1,6 @@
 interface IProductState {
   products: IGroupCategory
+  previousProducts: IGroupCategory
 }
 
 interface IGoodItem {
@@ -13,11 +14,12 @@ interface IGoodItem {
 }
 
 interface IGroupCategory {
-  [key: string]: {
-    G: string
-    B: IProductCategory
-    C?: number
-  }
+  [key: string]: IGroupCategoryBody
+}
+interface IGroupCategoryBody {
+  G: string
+  B: IProductCategory
+  C?: number
 }
 
 interface IProductCategory {
@@ -27,7 +29,7 @@ interface IProductCategory {
 interface IProductCategoryBody {
   N: string
   T?: number | string
-  C?: number
+  C?: number | string
   P?: number
   id?: number
   selectedQuantity?: number
@@ -45,5 +47,6 @@ export {
   IGroupCategory,
   IProductCategory,
   IProductCategoryBody,
-  IQueryChangeQuantity
+  IQueryChangeQuantity,
+  IGroupCategoryBody
 }

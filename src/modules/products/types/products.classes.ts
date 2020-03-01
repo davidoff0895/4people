@@ -1,7 +1,11 @@
 import {IGoodItem, IGroupCategory} from '@/modules/products/types/products.types'
 
 class ProductsGroupCast {
-  constructor({products, castRules}: {products: IGoodItem[], castRules: IGroupCategory}) {
+  constructor({products, castRules, currentRate}: {
+    products: IGoodItem[],
+    castRules: IGroupCategory,
+    currentRate: number
+  }) {
     return products.reduce((acc: IGroupCategory, product) => {
       if (!acc[product.G]) {
         acc[product.G] = {
@@ -11,7 +15,7 @@ class ProductsGroupCast {
       }
       acc[product.G].B[product.T] = {
         N: castRules[product.G].B[product.T].N,
-        C: product.C * 66,
+        C: +(product.C * currentRate).toFixed(2),
         P: product.P,
         id: product.T,
         selectedQuantity: 1,

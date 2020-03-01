@@ -1,5 +1,9 @@
 <template>
   <div class="cart">
+    <label class="cart__label">
+      <icons icon="shopping-cart"/>
+      Корзина
+    </label>
     <div class="grid-container thead">
       <div class="grid-item">
         Наименование товара и описание
@@ -12,6 +16,7 @@
       <div class="grid-item">
         <price-per-quantity
           :inputQuantity="product"
+          :key="product.id"
           @update-quantity="updateQuantity"
         />
       </div>
@@ -27,7 +32,7 @@
         </button>
       </div>
     </div>
-    <div v-if="selectedProducts.length" class="grid-container thead">
+    <div class="grid-container thead">
       <div class="grid-item total">
         Общая стоимость:
         <div class="total__sum">
@@ -44,10 +49,14 @@
   import { IProductCategoryBody } from '@/modules/products/types/products.types'
   import PricePerQuantity from '@/ui/common/price-per-quantity.vue'
   import {price} from '@/common/filters/price'
+  import Icons from '@/common/icons/icons'
 
   @Component({
     name: 'cart',
-    components: {PricePerQuantity},
+    components: {
+      PricePerQuantity,
+      Icons
+    },
     filters: {
       currencyPrice(value: number) {
         return price(value, 'руб')
@@ -77,8 +86,16 @@
   @import "@/ui/variables.scss";
 
   .cart {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 5rem auto;
+    border: $border-outher;
+    padding: 20px;
+    border-radius: 2px;
+
+    &__label {
+      font-size: 18px;
+      color: $accent-color;
+    }
   }
   .grid-container {
     grid-template-columns: auto 200px 200px 100px;

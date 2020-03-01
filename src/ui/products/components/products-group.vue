@@ -19,7 +19,13 @@
               ({{ item.P }})
             </div>
             <div class="products-group__container__item__content products-group__container__item__price">
-              {{ item.C | price }}
+              <div class="center-block">
+                {{ item.C | price }}
+                <div v-if="previousGroup" class="d-inline-block">
+                  <icons v-if="increasedPrice(item)" icon="arrow-down" class="price__down"/>
+                  <icons v-else icon="arrow-up" class="price__up"/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -30,8 +36,8 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import {Component, Prop} from 'vue-property-decorator'
-  import {IGroupCategory, IProductCategory} from '@/modules/products/types/products.types'
+  import { Component, Prop } from 'vue-property-decorator'
+  import { IGroupCategoryBody, IProductCategoryBody } from '@/modules/products/types/products.types'
   import Icons from '@/common/icons/icons'
   import { price } from '@/common/filters/price'
 
@@ -46,20 +52,26 @@
   })
   export default class ProductGroup extends Vue {
     @Prop(Object)
-    group: IGroupCategory
+    group: IGroupCategoryBody
+    @Prop(Object)
+    previousGroup: IGroupCategoryBody
     @Prop(Array)
-    selectedProducts: IProductCategory[]
+    selectedProducts: IProductCategoryBody[]
 
     isShowItem: boolean = true
 
     toggleItem() {
       this.isShowItem = !this.isShowItem
     }
-    selectItem(item: IProductCategory) {
+    selectItem(item: IProductCategoryBody) {
       this.$emit('select-item', item)
     }
-    isSelected(item: IProductCategory) {
+    isSelected(item: IProductCategoryBody) {
       return !!this.selectedProducts.find((p) => p.id === item.id)
+    }
+    increasedPrice(item: IProductCategoryBody) {
+      const previousStateItemPrice = this.previousGroup.B[item.id].C
+      return previousStateItemPrice > item.C
     }
   }
 </script>
@@ -74,6 +86,7 @@
       cursor: pointer;
       font-size: 18px;
       padding: $common-padding;
+      color: #fff;
     }
 
     .grid-item {
@@ -94,7 +107,8 @@
       border: $border-outher;
 
       &__item {
-        grid-template-columns: auto 90px;
+        grid-template-columns: auto 140px;
+        height: 100%;
         cursor: pointer;
         transition: $common-transition;
 
@@ -111,7 +125,7 @@
         }
 
         &__price {
-          padding: $large-padding;
+          position: relative;
           text-align: center;
           font-weight: bold;
           background: #e6e6e6;
@@ -136,6 +150,14 @@
       .products-group__container__item__content, .products-group__container__item__price {
         background: $selected-color;
       }
+    }
+  }
+  .price {
+    &__up {
+      color: red;
+    }
+    &__down {
+      color: green;
     }
   }
 </style>

@@ -5,6 +5,7 @@
         v-for="(group, index) in products"
         :key="index"
         :group="group"
+        :previous-group="previousProducts[index]"
         :selectedProducts="selectedProducts"
         @select-item="selectItem"
       />
@@ -37,14 +38,20 @@
   export default class ProductsContainer extends Vue {
     @Getter(`${PRODUCT}/products`)
     products: IProductState['products']
+    @Getter(`${PRODUCT}/previousProducts`)
+    previousProducts: IProductState['previousProducts']
 
-    @Action(`${PRODUCT}/getProducts`)
-    getProducts: any
+    @Action(`${PRODUCT}/updateProducts`)
+    updateProducts: any
 
     selectedProducts: IProductCategoryBody[] = []
 
     mounted() {
-      this.getProducts()
+      this.updateProducts(66)
+
+      setInterval(() => {
+        this.updateProducts(Math.random() * 60 + 20)
+      }, 15000)
     }
 
     selectItem(item: IProductCategoryBody) {
