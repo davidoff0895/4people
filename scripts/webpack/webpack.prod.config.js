@@ -8,16 +8,6 @@ module.exports = merge.smart(commonWebpack, {
     chunkFilename: '[name].[chunkhash].bundle.js',
     pathinfo: false
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/
-      },
-      {
-        test: /\.scss$/
-      }
-    ]
-  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
